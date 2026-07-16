@@ -19,7 +19,7 @@ function ContactSection() {
   const { entries, isLoading, isSubmitting, error, submitEntry } = useGuestbook();
 
   return (
-    <Box component="section" sx={{ bgcolor: 'custom.bgCream', py: { xs: 6, md: 10 } }}>
+    <Box component="section" sx={{ bgcolor: 'primary.main', color: 'custom.textInverse', py: { xs: 6, md: 10 } }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
         <Typography
           component="h2"
@@ -28,7 +28,7 @@ function ContactSection() {
           Contact
         </Typography>
         <Typography
-          sx={{ fontSize: { xs: '1rem', md: '1.1rem' }, lineHeight: 1.6, mb: { xs: 4, md: 6 }, textAlign: 'center', color: 'text.secondary' }}
+          sx={{ fontSize: { xs: '1rem', md: '1.1rem' }, lineHeight: 1.6, mb: { xs: 4, md: 6 }, textAlign: 'center', opacity: 0.85 }}
         >
           방명록에 자유롭게 메시지를 남겨주세요.
         </Typography>

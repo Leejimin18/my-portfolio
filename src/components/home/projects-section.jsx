@@ -48,7 +48,7 @@ function ProjectsSection() {
         </Grid>
         <Button
           variant="contained"
-          sx={{ bgcolor: 'custom.btnOrange', '&:hover': { bgcolor: 'secondary.dark' } }}
+          sx={{ bgcolor: 'custom.btnPurple', '&:hover': { bgcolor: 'primary.dark' } }}
         >
           더 보기
         </Button>

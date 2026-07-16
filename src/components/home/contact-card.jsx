@@ -6,11 +6,15 @@ import IconButton from '@mui/material/IconButton';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+
+const CONTACT_EMAIL = '00jimin01080@gmail.com';
+const CONTACT_PHONE = '010-0000-0000';
 
 const SNS_LINKS = [
   { label: 'GitHub', href: '#', icon: GitHubIcon, bgcolor: 'custom.warmGreen' },
   { label: 'LinkedIn', href: '#', icon: LinkedInIcon, bgcolor: 'custom.btnOrange' },
-  { label: 'Email', href: '#', icon: EmailIcon, bgcolor: 'custom.warmYellow' },
+  { label: 'Email', href: `mailto:${CONTACT_EMAIL}`, icon: EmailIcon, bgcolor: 'custom.warmLavender' },
 ];
 
 /**
@@ -35,12 +39,13 @@ function ContactCard() {
       <Typography component="h3" sx={{ fontSize: { xs: '1.2rem', md: '1.4rem' }, fontWeight: 600, mb: 2 }}>
         연락처
       </Typography>
-      <Typography sx={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'text.secondary', mb: 3 }}>
-        궁금한 점이나 함께 하고 싶은 프로젝트가 있다면 편하게 연락 주세요.
-      </Typography>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
         <EmailIcon sx={{ color: 'text.secondary', fontSize: '1.2rem' }} />
-        <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary' }}>example@email.com</Typography>
+        <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary' }}>{CONTACT_EMAIL}</Typography>
+      </Box>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
+        <PhoneIcon sx={{ color: 'text.secondary', fontSize: '1.2rem' }} />
+        <Typography sx={{ fontSize: '0.95rem', color: 'text.secondary' }}>{CONTACT_PHONE}</Typography>
       </Box>
       <Stack direction="row" spacing={1.5}>
         {SNS_LINKS.map(({ label, href, icon: Icon, bgcolor }) => (

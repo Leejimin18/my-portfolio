@@ -18,6 +18,12 @@ import Alert from '@mui/material/Alert';
  * Example usage:
  * <GuestbookForm onSubmit={submitEntry} isSubmitting={isSubmitting} error={error} />
  */
+const textFieldSx = {
+  bgcolor: 'custom.textInverse',
+  borderRadius: 1,
+  '& .MuiInputBase-input:focus::placeholder': { opacity: 0 },
+};
+
 function GuestbookForm({ onSubmit, isSubmitting = false, error = null }) {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
@@ -46,37 +52,43 @@ function GuestbookForm({ onSubmit, isSubmitting = false, error = null }) {
     <Box component="form" onSubmit={handleSubmit}>
       <Stack spacing={2}>
         <TextField
-          label="이름"
+          placeholder="이름"
+          aria-label="이름"
           value={name}
           onChange={(event) => setName(event.target.value)}
           required
           fullWidth
-          sx={{ bgcolor: 'custom.textInverse', borderRadius: 1 }}
+          sx={textFieldSx}
         />
         <TextField
-          label="메시지"
+          placeholder="메시지"
+          aria-label="메시지"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           required
           multiline
           minRows={3}
           fullWidth
-          sx={{ bgcolor: 'custom.textInverse', borderRadius: 1 }}
+          sx={textFieldSx}
         />
         <TextField
-          label="이메일 (선택, 비공개)"
+          placeholder="이메일 (선택, 비공개)"
+          aria-label="이메일 (선택, 비공개)"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           type="email"
           fullWidth
-          sx={{ bgcolor: 'custom.textInverse', borderRadius: 1 }}
+          sx={textFieldSx}
         />
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary' }}>별점</Typography>
+          <Typography sx={{ fontSize: '0.9rem', opacity: 0.85 }}>별점</Typography>
           <Rating
             value={rating}
             onChange={(_event, value) => setRating(value)}
-            sx={{ color: 'custom.btnOrange' }}
+            sx={{
+              color: 'custom.btnOrange',
+              '& .MuiRating-iconEmpty': { color: 'custom.textInverse' },
+            }}
           />
         </Box>
         {error && <Alert severity="error">{error}</Alert>}
@@ -85,7 +97,13 @@ function GuestbookForm({ onSubmit, isSubmitting = false, error = null }) {
           type="submit"
           variant="contained"
           disabled={isSubmitting}
-          sx={{ bgcolor: 'custom.btnGreen', alignSelf: 'flex-start', px: 4 }}
+          sx={{
+            bgcolor: 'custom.bgCream',
+            color: 'custom.btnPurple',
+            alignSelf: 'flex-start',
+            px: 4,
+            '&:hover': { bgcolor: 'custom.bgCream', opacity: 0.85 },
+          }}
         >
           {isSubmitting ? '등록 중...' : '남기기'}
         </Button>

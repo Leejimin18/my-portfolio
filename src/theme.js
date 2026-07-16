@@ -29,7 +29,7 @@ const theme = createTheme({
       btnOrange: '#FF5B28',
       btnPurple: '#7A00A0',
       btnGreen: '#014924',
-      warmYellow: '#FFD54F',
+      warmLavender: '#B39DDB',
       warmGreen: '#AED581',
       cardBg: '#FFFFFF',
     },

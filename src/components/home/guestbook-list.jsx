@@ -17,7 +17,7 @@ import Rating from '@mui/material/Rating';
 function GuestbookList({ entries, isLoading = false }) {
   if (isLoading) {
     return (
-      <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', mt: 3 }}>
+      <Typography sx={{ fontSize: '0.9rem', opacity: 0.85, mt: 3 }}>
         방명록을 불러오는 중...
       </Typography>
     );
@@ -25,7 +25,7 @@ function GuestbookList({ entries, isLoading = false }) {
 
   if (entries.length === 0) {
     return (
-      <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', mt: 3 }}>
+      <Typography sx={{ fontSize: '0.9rem', opacity: 0.85, mt: 3 }}>
         아직 남겨진 방명록이 없습니다. 첫 메시지를 남겨보세요!
       </Typography>
     );
