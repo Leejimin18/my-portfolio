@@ -25,7 +25,7 @@ function ProjectThumbnailTile({ title, thumbnailUrl }) {
       sx={{
         display: 'block',
         position: 'relative',
-        height: { xs: 80, md: 120 },
+        height: { xs: 160, md: 240 },
         overflow: 'hidden',
         textDecoration: 'none',
         border: '1px solid',
