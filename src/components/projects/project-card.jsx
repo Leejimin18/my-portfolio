@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -5,6 +6,7 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 
 /**
  * ProjectCard 컴포넌트
@@ -21,6 +23,8 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
  * <ProjectCard title="맛집 공유 커뮤니티" description="..." techStack={['React']} projectType="개인" detailUrl="https://..." thumbnailUrl="https://..." />
  */
 function ProjectCard({ title, description, techStack = [], projectType = '개인', detailUrl, thumbnailUrl }) {
+  const [isThumbnailError, setIsThumbnailError] = useState(false);
+
   return (
     <Paper
       sx={{
@@ -36,18 +40,39 @@ function ProjectCard({ title, description, techStack = [], projectType = '개인
         },
       }}
     >
-      <Box
-        component="img"
-        src={thumbnailUrl}
-        alt={`${title} 썸네일`}
-        sx={{
-          width: { xs: '100%', sm: 300 },
-          height: 300,
-          objectFit: 'cover',
-          flexShrink: 0,
-          bgcolor: 'custom.bgCream',
-        }}
-      />
+      {isThumbnailError ? (
+        <Box
+          sx={{
+            width: { xs: '100%', sm: 300 },
+            height: 300,
+            flexShrink: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 1,
+            bgcolor: 'custom.bgCream',
+            color: 'text.secondary',
+          }}
+        >
+          <ImageOutlinedIcon sx={{ fontSize: 40 }} />
+          <Typography sx={{ fontSize: '0.85rem' }}>썸네일을 불러올 수 없습니다</Typography>
+        </Box>
+      ) : (
+        <Box
+          component="img"
+          src={thumbnailUrl}
+          alt={`${title} 썸네일`}
+          onError={() => setIsThumbnailError(true)}
+          sx={{
+            width: { xs: '100%', sm: 300 },
+            height: 300,
+            objectFit: 'cover',
+            flexShrink: 0,
+            bgcolor: 'custom.bgCream',
+          }}
+        />
+      )}
       <Box
         sx={{
           display: 'flex',
